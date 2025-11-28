@@ -1,7 +1,7 @@
 # WebScrapper
 
 ## Live Demo
-View my live project: [Project Link](#)
+View my live project: [Project Link](https://global-news-fetcher.onrender.com)
 
 ## Overview
 WebScrapper is a Python-based project designed to fetch and display global news. It includes a backend that handles news fetching and caching, and a simple HTML template for displaying the news.
