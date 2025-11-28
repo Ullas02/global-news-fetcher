@@ -1,4 +1,4 @@
-# WebScrapper
+# Global News Fetcher (WebScrapper)
 
 ## Live Demo
 View my live project: [Project Link](https://global-news-fetcher.onrender.com)
