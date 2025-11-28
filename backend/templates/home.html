@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World News</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0;}
+        .container { width: 90%; max-width: 1000px; margin: auto; padding: 20px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+        h1 { color: #333; }
+        .article { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #ddd;}
+        .article h2 { font-size: 1.4em; margin-bottom: 5px; color: #007BFF;}
+        .article p { margin: 5px 0; color: #555; }
+        .article a { color: #007BFF; text-decoration: none; font-weight: bold; }
+        .article a:hover { text-decoration: underline; }
+        form { margin-bottom: 30px; }
+        select, button { padding: 5px 10px; font-size: 1em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Top News</h1>
+
+        <!-- Dropdown form -->
+        <form method="get" action="/">
+            <label for="country">Select Country:</label>
+            <select name="country" id="country" style="margin-right:15px;">
+                {% for code, name in countries.items() %}
+                    <option value="{{ code }}" {% if selected_country==code %}selected{% endif %}>{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="page_size">Number of Articles:</label>
+            <select name="page_size" id="page_size" style="margin-right:15px;">
+                {% for size in page_sizes %}
+                    <option value="{{ size }}" {% if selected_page_size==size %}selected{% endif %}>{{ size }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Update</button>
+        </form>
+
+        {% if articles %}
+            {% for a in articles %}
+                <div class="article">
+                    <h2>{{ a.title }}</h2>
+                    <p>{{ a.description }}</p>
+                    <p><b>Source:</b> {{ a.source }}</p>
+                    <a href="{{ a.url }}" target="_blank">Read full article →</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h3>No news available for selected country. Try a different country or check your API key.</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
